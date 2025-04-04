@@ -58,7 +58,7 @@
                                         <li><span>Berat: {{ $item->produk->berat }} Gram</span></li>
                                     </ul>
                                     <ul>
-                                        <li><span>Stok: {{ $item->produk->stok }} Gram</span></li>
+                                        <li><span>Stok: {{ $item->produk->stok }} Pcs</span></li>
                                     </ul>
                                 </td>
                                 <td class="price text-center"><strong>Rp.

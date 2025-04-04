@@ -227,7 +227,7 @@ class OrderController extends Controller
     public function selectShipping(Request $request)
     {
         $customer = Customer::where('user_id', Auth::id())->first();
-        $order = Order::where('customer_id', $customer->id)->where('status', 'pending')->first();
+        $order = Order::where('customer_id', $customer->id)->where('status', 'pending', 'paid')->first();
 
         if (!$order || $order->orderItems->count() == 0) {
             return redirect()->route('order.cart')->with('error', 'Keranjang belanja kosong.');
@@ -271,7 +271,6 @@ class OrderController extends Controller
         if ($order) {
             $order->load('orderItems.produk');
         }
-        \Log::info('Isi variabel $order:', ['order' => $order]);
 
         // Pastikan total_price sudah dihitung dengan benar 
         $totalHarga = 0;
