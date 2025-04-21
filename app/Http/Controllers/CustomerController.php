@@ -43,7 +43,7 @@ class CustomerController extends Controller
                     'nama' => $socialUser->name,
                     'email' => $socialUser->email,
                     'hp' => $socialUser->phone ?? "-",
-                    'foto' => $socialUser->avatar ?? null,
+                    'foto' => $socialUser->avatar ?? "img-default.jpg",
                     'role' => '2', // Role customer
                     'status' => 1, // Status aktif
                     'password' => Hash::make('default_password'), // Password default (opsional)
