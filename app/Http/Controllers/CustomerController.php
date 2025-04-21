@@ -42,7 +42,7 @@ class CustomerController extends Controller
                 $user = User::create([
                     'nama' => $socialUser->name,
                     'email' => $socialUser->email,
-                    'hp' => $socialUser->phone ?? null,
+                    'hp' => $socialUser->phone ?? "-",
                     'foto' => $socialUser->avatar ?? null,
                     'role' => '2', // Role customer
                     'status' => 1, // Status aktif
