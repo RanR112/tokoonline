@@ -84,7 +84,11 @@
                     </tbody>
                 </table>
 
-                <form action="{{ route('order.selectShipping') }}" method="post">
+                <div class="cart-summary text-right" style="margin-top: 20px;">
+                    <h4><strong>Total Harga: Rp {{ number_format($totalHarga, 0, ',', '.') }}</strong></h4>
+                </div>
+
+                <form action="{{ route('order.select-shipping') }}" method="post">
                     @csrf
                     <input type="hidden" name="total_price" value="{{ $totalHarga }}">
                     <input type="hidden" name="total_weight" value="{{ $totalBerat }}">

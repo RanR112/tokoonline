@@ -59,15 +59,22 @@ Route::middleware('is.customer')->group(function () {
     // Route untuk menambahkan produk ke keranjang 
     Route::post('add-to-cart/{id}', [OrderController::class, 'addToCart'])->name('order.addToCart');
     Route::get('cart', [OrderController::class, 'viewCart'])->name('order.cart');
-    Route::post('cart/update/{id}', [OrderController::class, 'updateCart'])->name('order.updateCart'); 
-    Route::post('remove/{id}', [OrderController::class, 'removeFromCart'])->name('order.remove'); 
+    Route::post('cart/update/{id}', [OrderController::class, 'updateCart'])->name('order.updateCart');
+    Route::post('remove/{id}', [OrderController::class, 'removeFromCart'])->name('order.remove');
     // Ongkir 
-    Route::post('select-shipping', [OrderController::class, 'selectShipping'])->name('order.selectShipping'); 
-    Route::get('provinces', [OrderController::class, 'getProvinces']); 
-    Route::get('cities', [OrderController::class, 'getCities']); 
-    Route::post('cost', [OrderController::class, 'getCost']); 
-    Route::post('updateongkir', [OrderController::class, 'updateongkir'])->name('order.updateongkir'); 
-    Route::get('selectpayment', [OrderController::class, 'selectpayment'])->name('order.selectpayment'); 
+    Route::post('select-shipping', [OrderController::class, 'selectShipping'])->name('order.select-shipping');
+    Route::get('provinces', [OrderController::class, 'getProvinces']);
+    Route::get('cities', [OrderController::class, 'getCities']);
+    Route::post('cost', [OrderController::class, 'getCost']);
+    Route::post('updateongkir', [OrderController::class, 'updateongkir'])->name('order.update-ongkir');
+    Route::get('selectpayment', [OrderController::class, 'selectpayment'])->name('order.select-payment');
+    Route::post('/midtrans-callback', [OrderController::class, 'callback']);
+    Route::get('/order/complete', [OrderController::class, 'complete'])
+        ->name('order.complete');
+    // Route history 
+    Route::get('history', [OrderController::class, 'orderHistory'])->name('order.history');
+    Route::get('order/invoice/{id}', [OrderController::class, 'invoiceFrontend'])
+        ->name('order.invoice');
 });
 
 Route::get('/list-ongkir', function () {

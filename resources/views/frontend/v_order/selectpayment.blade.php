@@ -78,6 +78,10 @@
                             <td colspan="2">
                                 Rp. {{ number_format($order->biaya_ongkir, 0, ',', '.') }} <br>
                                 {{ $order->kurir . '.' . $order->layanan_ongkir . ' *estimasi ' . $order->estimasi_ongkir . ' Hari' }}
+                                @if (session('origin'))
+                                    <p>Kota asal: {{ $originName }} </p>
+                                @endif
+
                             </td>
                         </tr>
                         <tr>
@@ -106,7 +110,7 @@
                 onSuccess: function(result) {
                     alert("payment success!");
                     console.log(result);
-                    window.location.href = "{{ route('frontend.beranda') }}";
+                    window.location.href = "{{ route('order.complete') }}";
                 },
                 onPending: function(result) {
                     alert("waiting for your payment!");
@@ -122,4 +126,5 @@
             });
         });
     </script>
+
 @endsection
